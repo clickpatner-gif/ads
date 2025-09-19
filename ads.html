@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Ads & Meta Ads | Click Google Partner</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e9f1ff, #ffffff);
+      color: #003ea8;
+    }
+    header {
+      background: #0057e7;
+      padding: 20px 40px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      color: #0057e7;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      background: #0057e7;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 87, 231, 0.4);
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #003ea8;
+    }
+
+    #three-model {
+      width: 400px;
+      height: 400px;
+      flex: 1 1 300px;
+    }
+
+    section.benefits {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    section.benefits h3 {
+      font-size: 2rem;
+      color: #0057e7;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .benefit-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-item {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 87, 231, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .benefit-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 87, 231, 0.2);
+    }
+
+    footer {
+      background: #003ea8;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-weight: 600;
+    }
+
+    @media(max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      #three-model {
+        width: 100%;
+        height: 300px;
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Click Google Partner</h1>
+    <a href="index.html">⬅ Kembali ke Beranda</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Google Ads & Meta Ads</h2>
+      <p>Kami ahli dalam strategi dan optimasi iklan Google & Meta untuk hasil maksimal. Dapatkan ROI terbaik dengan biaya efisien dan target audiens yang tepat.</p>
+      <button class="btn" onclick="document.querySelector('.benefits').scrollIntoView({behavior:'smooth'})">Lihat Manfaat</button>
+    </div>
+    <div id="three-model"></div>
+  </section>
+
+  <section class="benefits">
+    <h3>Manfaat Layanan Iklan Kami</h3>
+    <div class="benefit-list">
+      <div class="benefit-item">🎯 Penargetan Audiens yang Akurat</div>
+      <div class="benefit-item">💰 Efisiensi Budget & ROI Tinggi</div>
+      <div class="benefit-item">📈 Laporan & Analisis Performa</div>
+      <div class="benefit-item">📊 Retargeting & Lookalike Audience</div>
+      <div class="benefit-item">⚡ Iklan Berbasis Tujuan Bisnis</div>
+      <div class="benefit-item">📱 Desain Visual yang Menarik</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Click Google Partner. All rights reserved.
+  </footer>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+  <script>
+    // Setup 3D scene
+    const container = document.getElementById("three-model");
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.z = 4;
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    // Geometry for model (abstract "ads" representation)
+    const geometry = new THREE.IcosahedronGeometry(1.2, 1);
+    const material = new THREE.MeshStandardMaterial({
+      color: 0x0057e7,
+      metalness: 0.6,
+      roughness: 0.3,
+      flatShading: true
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    const light = new THREE.PointLight(0xffffff, 1.2);
+    light.position.set(5, 5, 5);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      mesh.rotation.x += 0.007;
+      mesh.rotation.y += 0.009;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle responsive resize
+    window.addEventListener('resize', () => {
+      camera.aspect = container.clientWidth / container.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+  </script>
+</body>
+</html>
